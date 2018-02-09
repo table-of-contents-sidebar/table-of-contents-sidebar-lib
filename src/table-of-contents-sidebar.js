@@ -159,7 +159,7 @@ var TableOfContents  = {
         var bugBtn = this.createImageNode(this.params.basePath + "images/bug.png", "Report Bugs");
         bugBtn.addEventListener('click', function (e) {
             e.stopPropagation();
-            window.open('https://github.com/codedrinker/table-of-contents-sidebar/issues', '_blank');
+            window.open('https://github.com/table-of-contents-sidebar/table-of-contents-sidebar/issues', '_blank');
         });
         bugBtn.tooltip = this.params.bugTooltip || "Report Bug";
         bugBtn.addEventListener('mouseover', TableOfContentsTooltip.show);
