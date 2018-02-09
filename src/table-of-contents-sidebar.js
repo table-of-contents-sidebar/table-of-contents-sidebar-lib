@@ -196,10 +196,14 @@ var TableOfContents  = {
         optionsContainer.appendChild(pinBtn);
         optionsContainer.appendChild(bugBtn);
 
-        if(!!chrome.extension) {
-            optionsContainer.appendChild(starBtn);
-        } else {
-            optionsContainer.appendChild(installBtn);
+        if(!!chrome) {
+            if(!!chrome.extension) {
+                optionsContainer.appendChild(starBtn);
+            } else {
+                optionsContainer.appendChild(installBtn);
+                optionsContainer.appendChild(integrateBtn);
+            }
+        }else {
             optionsContainer.appendChild(integrateBtn);
         }
         optionsContainer.appendChild(document.createElement('br'));
