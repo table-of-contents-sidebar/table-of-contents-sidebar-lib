@@ -196,8 +196,8 @@ var TableOfContents  = {
         optionsContainer.appendChild(pinBtn);
         optionsContainer.appendChild(bugBtn);
 
-        if(!!chrome) {
-            if(!!chrome.extension) {
+        if(!!window.chrome) {
+            if(!!window.chrome.extension) {
                 optionsContainer.appendChild(starBtn);
             } else {
                 optionsContainer.appendChild(installBtn);
