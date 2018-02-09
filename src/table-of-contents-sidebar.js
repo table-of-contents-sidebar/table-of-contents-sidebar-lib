@@ -186,7 +186,7 @@ var TableOfContents  = {
         var integrateBtn = this.createImageNode(this.params.basePath + "images/code.png", "Integrate to your website");
         integrateBtn.addEventListener('click', function (e) {
             e.stopPropagation();
-            window.open('https://table-of-contents-sidebar.github.com', '_blank');
+            window.open('https://table-of-contents-sidebar.github.io', '_blank');
         });
         integrateBtn.tooltip = this.params.integrateBtnTooltip || "Integrate to your website";
         integrateBtn.addEventListener('mouseover', TableOfContentsTooltip.show);
