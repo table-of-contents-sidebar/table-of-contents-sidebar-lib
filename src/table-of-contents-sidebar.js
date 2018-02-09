@@ -177,7 +177,15 @@ var TableOfContents  = {
         var installBtn = this.createImageNode(this.params.basePath + "images/chrome.png", "Install Chrome Extension");
         installBtn.addEventListener('click', function (e) {
             e.stopPropagation();
-            window.open('https://chrome.google.com/webstore/detail/table-of-contents-sidebar/ohohkfheangmbedkgechjkmbepeikkej/reviews', '_blank');
+            e.preventDefault();
+            chrome.webstore.install("https://chrome.google.com/webstore/detail/ohohkfheangmbedkgechjkmbepeikkej", function() {
+            }, function(err) {
+                if (err != "User cancelled install") {
+                    window.open('https://chrome.google.com/webstore/detail/table-of-contents-sidebar/ohohkfheangmbedkgechjkmbepeikkej/reviews', '_blank');
+                } else {
+                    console.log(err);
+                }
+            });
         });
         installBtn.tooltip = this.params.installTooltip || "Install Chrome Extension";
         installBtn.addEventListener('mouseover', TableOfContentsTooltip.show);
@@ -200,6 +208,15 @@ var TableOfContents  = {
             if(!!window.chrome.extension) {
                 optionsContainer.appendChild(starBtn);
             } else {
+                var link = document.createElement("link");
+                link.href = "https://chrome.google.com/webstore/detail/ohohkfheangmbedkgechjkmbepeikkej";
+                link.rel = "chrome-webstore-item";
+                var headNode = document.getElementsByTagName("head");
+                if (headNode) {
+                    headNode[0].appendChild(link);
+                } else {
+                    document.body.appendChild(link);
+                }
                 optionsContainer.appendChild(installBtn);
                 optionsContainer.appendChild(integrateBtn);
             }
