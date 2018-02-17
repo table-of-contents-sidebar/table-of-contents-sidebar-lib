@@ -218,11 +218,9 @@ var TableOfContents  = {
                     document.body.appendChild(link);
                 }
                 optionsContainer.appendChild(installBtn);
-                optionsContainer.appendChild(integrateBtn);
             }
-        }else {
-            optionsContainer.appendChild(integrateBtn);
         }
+        optionsContainer.appendChild(integrateBtn);
         optionsContainer.appendChild(document.createElement('br'));
         return optionsContainer;
     },
