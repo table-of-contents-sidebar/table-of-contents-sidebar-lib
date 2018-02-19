@@ -271,7 +271,8 @@ var TableOfContents  = {
         }
     },
     extractNodes: function(){
-        var documents = document.getElementsByTagName('*');
+        var querySelector = this.params.querySelector || "body";
+        var documents = document.querySelector(querySelector).querySelectorAll("*")
         var iteratorAbsTop = 0;
         var sidebarCount = 0;
         var matchesNodes = [];
