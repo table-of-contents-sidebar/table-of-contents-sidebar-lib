@@ -441,6 +441,8 @@ var TableOfContents  = {
         return span;
     },
     parseNodes: function (parent,node,index) {
+        var scrollEffect = this.params.scrollEffect;
+        var showTooltip = this.params.showTooltip;
         if (!!node) {
             if(!!node.text) {
                 var li = document.createElement("li");
@@ -452,8 +454,10 @@ var TableOfContents  = {
                 refNode.tooltip = node.text;
                 refNode.auto = true;
                 refNode.href = "#" + node.id;
-                refNode.addEventListener('mouseover', TableOfContentsTooltip.show);
-                refNode.addEventListener('mouseleave', TableOfContentsTooltip.hide);
+                if (showTooltip) {
+                    refNode.addEventListener('mouseover', TableOfContentsTooltip.show);
+                    refNode.addEventListener('mouseleave', TableOfContentsTooltip.hide);
+                }
                 refNode.addEventListener('click', function (e) {
                     e.preventDefault();
                     var id = e.srcElement.hash.substr(1);
@@ -465,7 +469,7 @@ var TableOfContents  = {
                         window.scroll({
                           top: top,
                           left: 0, 
-                          behavior: 'smooth'
+                          behavior: scrollEffect ? 'smooth' : 'auto'
                         });
                     }
                  });
